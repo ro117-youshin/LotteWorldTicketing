@@ -3,51 +3,55 @@
 
 int main() {
    
-   // 1 - 1
-   const int FULL_TICKET_1DAY_ADULT = 62000, FULL_TICKET_1DAY_TEEN = 54000, FULL_TICKET_1DAY_CHILD = 47000;
-   // 1 - 2   
-   const int FULL_TICKET_AFTER4_ADULT = 50000, FULL_TICKET_AFTER4_TEEN = 43000, FULL_TICKET_AFTER4_CHILD = 36000;
-   // 2 - 1
-   const int PARK_TICKET_1DAY_ADULT = 59000, PARK_TICKET_1DAY_TEEN = 52000, PARK_TICKET_1DAY_CHILD = 46000;
-   // 2 - 2
-   const int PARK_TICKET_AFTER4_ADULT = 47000, PARK_TICKET_AFTER4_TEEN = 41000, PARK_TICKET_AFTER4_CHILD = 35000; 
-   // º£ÀÌºñ 
-   const int BABY = 15000;
-   // ¿ì´ëÇÒÀÎ
-   const float DISCOUNT_RATE_DISABLED = 0.5, DISCOUNT_RATE_MAN_OF_MERIT = 0.5, DISCOUNT_RATE_SOLDIER = 0.51, DISCOUNT_RATE_PREGNANT = 0.5, DISCOUNT_RATE_CHILDREN_CARD = 0.7;
+   	// 1 - 1
+   	const int FULL_TICKET_1DAY_ADULT = 62000, FULL_TICKET_1DAY_TEEN = 54000, FULL_TICKET_1DAY_CHILD = 47000;
+   	// 1 - 2   
+   	const int FULL_TICKET_AFTER4_ADULT = 50000, FULL_TICKET_AFTER4_TEEN = 43000, FULL_TICKET_AFTER4_CHILD = 36000;
+   	// 2 - 1
+   	const int PARK_TICKET_1DAY_ADULT = 59000, PARK_TICKET_1DAY_TEEN = 52000, PARK_TICKET_1DAY_CHILD = 46000;
+   	// 2 - 2
+   	const int PARK_TICKET_AFTER4_ADULT = 47000, PARK_TICKET_AFTER4_TEEN = 41000, PARK_TICKET_AFTER4_CHILD = 35000; 
+   	// ë² ì´ë¹„ 
+   	const int BABY = 15000;
+   	// ì—°ë ¹ 
+   	const int MIN_ADULT_AGE = 19, MAX_ADULT_AGE = 64, MIN_TEEN_AGE = 13, MAX_TEEN_AGE = 18, MIN_CHILD_AGE = 3, MAX_CHILD_AGE = 12 , MIN_BABY_AGE = 1, MAX_BABY_AGE = 3;
+   	// ìš°ëŒ€í• ì¸
+   	const float DISCOUNT_RATE_DISABLED = 0.5, DISCOUNT_RATE_MAN_OF_MERIT = 0.5, DISCOUNT_RATE_SOLDIER = 0.51, DISCOUNT_RATE_PREGNANT = 0.5, DISCOUNT_RATE_CHILDREN_CARD = 0.7;
    
-   int ticketingArr[] = {0}; 
+   	int orderList[10][10] = {0};
+   	int orderCount;
+   	int inputTicketing, inputOption, continueButton, basicFeeType;
    
+   	do {
     // Ticketing
-    int inputTicketing, inputOption;
     
-	printf("±¸¸ÅÇÏ½Ç ÀÌ¿ë±ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\n");
-  	printf("1. Á¾ÇÕÀÌ¿ë±Ç(ÀÌ¿ë¹üÀ§: ·Ôµ¥¿ùµå + ¹Î¼Ó¹Ú¹°°ü)\n2. ÆÄÅ©ÀÌ¿ë±Ç(ÀÌ¿ë¹üÀ§: ·Ôµ¥¿ùµå)\n");
+	printf("êµ¬ë§¤í•˜ì‹¤ ì´ìš©ê¶Œì„ ì„ íƒí•˜ì„¸ìš”.\n");
+  	printf("1. ì¢…í•©ì´ìš©ê¶Œ(ì´ìš©ë²”ìœ„: ë¡¯ë°ì›”ë“œ + ë¯¼ì†ë°•ë¬¼ê´€)\n2. íŒŒí¬ì´ìš©ê¶Œ(ì´ìš©ë²”ìœ„: ë¡¯ë°ì›”ë“œ)\n");
    	scanf("%d", &inputTicketing);	
 		RE_INPUT_TICKETING:
 		if (!(inputTicketing == 1 || inputTicketing == 2)) {
-			printf("\n´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
-			printf("±¸¸ÅÇÏ½Ç ÀÌ¿ë±ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\n");
-  			printf("1. Á¾ÇÕÀÌ¿ë±Ç(ÀÌ¿ë¹üÀ§: ·Ôµ¥¿ùµå + ¹Î¼Ó¹Ú¹°°ü)\n2. ÆÄÅ©ÀÌ¿ë±Ç(ÀÌ¿ë¹üÀ§: ·Ôµ¥¿ùµå)\n");
+			printf("\në‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”.\n");
+			printf("êµ¬ë§¤í•˜ì‹¤ ì´ìš©ê¶Œì„ ì„ íƒí•˜ì„¸ìš”.\n");
+  			printf("1. ì¢…í•©ì´ìš©ê¶Œ(ì´ìš©ë²”ìœ„: ë¡¯ë°ì›”ë“œ + ë¯¼ì†ë°•ë¬¼ê´€)\n2. íŒŒí¬ì´ìš©ê¶Œ(ì´ìš©ë²”ìœ„: ë¡¯ë°ì›”ë“œ)\n");
    			scanf("%d", &inputTicketing);
 			goto RE_INPUT_TICKETING;	
 		}
 	
-	printf("\n¼±ÅÃÇÏ½Å ÀÌ¿ë±ÇÀÇ ¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\n");
-   	printf("1. 1Day\n2. After4(¿ÀÈÄ 4½ÃºÎÅÍ ÀÔÀå°¡´É)\n");
+	printf("\nì„ íƒí•˜ì‹  ì´ìš©ê¶Œì˜ ì˜µì…˜ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\n");
+   	printf("1. 1Day\n2. After4(ì˜¤í›„ 4ì‹œë¶€í„° ìž…ìž¥ê°€ëŠ¥)\n");
    	scanf("%d", &inputOption);
 		RE_INPUT_OPTION:
 		if (!(inputOption == 1 || inputOption == 2)) {
-			printf("\n´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
-			printf("\n¼±ÅÃÇÏ½Å ÀÌ¿ë±ÇÀÇ ¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\n");
-	   		printf("1. 1Day\n2. After4(¿ÀÈÄ 4½ÃºÎÅÍ ÀÔÀå°¡´É)\n");
+			printf("\në‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”.\n");
+			printf("\nì„ íƒí•˜ì‹  ì´ìš©ê¶Œì˜ ì˜µì…˜ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\n");
+	   		printf("1. 1Day\n2. After4(ì˜¤í›„ 4ì‹œë¶€í„° ìž…ìž¥ê°€ëŠ¥)\n");
 	   		scanf("%d", &inputOption);
 	   		goto RE_INPUT_OPTION;
 		}
    
-   	// ÁÖ¹Î¹øÈ£ ÀÔ·Â
+   	// ì£¼ë¯¼ë²ˆí˜¸ ìž…ë ¥
    	int id, gender;
-    printf("\nÁÖ¹Îµî·Ï¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. ex) 930820-1\n");
+    printf("\nì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”. ex) 930820-1\n");
     scanf("%d-%d", &id, &gender);
     
    	time_t now;
@@ -59,11 +63,13 @@ int main() {
    	int currentMonth = t->tm_mon + 1;
    	int currentDay = t->tm_mday;
   	 
-   	int year = id / 10000;
-   	int month = (id % 10000) / 100; 
-   	int day = id % 100;
+   	int year = id / 10000; // 93820 / 10000; 93
+   	int month = (id % 10000) / 100; // 930820; 0820 100 08
+   	int day = id % 100; // 20
    	int age, century;
-   
+   	
+	printf("%d %d", year, currentYear);   
+	
 	if (gender == 1 || gender == 2) {
     	if (currentMonth > month || currentMonth == month && currentDay < day) {
 	    	century = 1900;
@@ -80,138 +86,210 @@ int main() {
 			age = currentYear - (century + year) - 1;
       	}
 	}
-    
-   // ¿¬·É ÇÒÀÎ 
-   // Á¾ÇÕÀÌ¿ë±Ç 1day 
-   int basicFee;
-   
-   if (inputTicketing == 1 && inputOption == 1) {
-    	if(age > 18 && age < 65) {
-        	basicFee = FULL_TICKET_1DAY_ADULT;
-      	} else if (age >= 13 && age <= 18) {
-         	basicFee = FULL_TICKET_1DAY_TEEN;
-      	} else if ((age >= 3 && age <= 12) || age >= 65) {
-        	basicFee = FULL_TICKET_1DAY_CHILD;
-      	} else {
-         	basicFee = 0;
-      	}
-   } 
-   // Á¾ÇÕÀÌ¿ë±Ç After4 
-   if (inputTicketing == 1 && inputOption == 2) {
-      	if(age > 18 && age < 65) {
-         	basicFee = FULL_TICKET_AFTER4_ADULT;
-      	} else if (age >= 13 && age <= 18) {
-         	basicFee = FULL_TICKET_AFTER4_TEEN;
-      	} else if ((age >= 3 && age <= 12) || age >= 65) {
-         	basicFee = FULL_TICKET_AFTER4_CHILD;
-      	} else {
-         	basicFee = 0;
-     	}
-   } 
-   // ÆÄÅ©ÀÌ¿ë±Ç 1day 
-   if (inputTicketing == 2 && inputOption == 1) {
-      	if(age > 18 && age < 65) {
-         	basicFee = PARK_TICKET_1DAY_ADULT;
-      	} else if (age >= 13 && age <= 18) {
-         	basicFee = PARK_TICKET_1DAY_TEEN;
-      	} else if ((age >= 3 && age <= 12) || age >= 65) {
-         	basicFee = PARK_TICKET_1DAY_CHILD;
-      	} else {
-         	basicFee = 0;
-      	}
-   } 
-   // Á¾ÇÕÀÌ¿ë±Ç After4 
-   if (inputTicketing == 2 && inputOption == 2) {
-      	if(age > 18 && age < 65) {
-         	basicFee = PARK_TICKET_AFTER4_ADULT;
-      	} else if (age >= 13 && age <= 18) {
-         	basicFee = PARK_TICKET_AFTER4_TEEN;
-      	} else if ((age >= 3 && age <= 12) || age >= 65) {
-         	basicFee = PARK_TICKET_AFTER4_CHILD;
-      	} else {
-         	basicFee = 0;
-      	}
-   } 
-   
-   if (age >= 1 && age < 3 && ) {
-   		basicFee = BABY;
-   }
-   
-   int numberOfTicket;
-   printf("\n¸îÀåÀ» ÁÖ¹®ÇÏ½Ã°Ú½À´Ï±î?\n");
-   scanf("%d", &numberOfTicket);
-   
-   // ¿ì´ë»çÇ× ÇÒÀÎ(»ó½Ã ¿ì´ë Á¤º¸)  
-   printf("\n¿ì´ë»çÇ×À» ¼±ÅÃÇÏ¼¼¿ä.\n(¿¬·É¿¡ µû¸¥ ¿ä±ÝÇÒÀÎÀº ÀÚµ¿ Àû¿ëµË´Ï´Ù.)\n\n");
-   printf("0. ¿ì´ëÁ¶°Ç ¾øÀ½\n");
-   printf("1. Àå¾ÖÀÎ ¿ì´ë\n");
-   printf("2. ±¹°¡À¯°øÀÚ ¿ì´ë\n");
-   printf("3. ÈÞ°¡Àåº´ ¿ì´ë\n");
-   printf("4. ÀÓ»êºÎ ¿ì´ë\n");
-   printf("5. ´ÙµÕÀÌ Çàº¹Ä«µå ¿ì´ë\n");
-   
-   int specialDiscount;
-   int totalFee;
-   int discountNum;
-   int countNum;
-   scanf("%d", &specialDiscount);
-   
-   // 0. ¿ì´ëÁ¶°Ç ¾øÀ½ 
-   if (specialDiscount == 0) {
-      totalFee = basicFee * numberOfTicket;
-   }
-   // 1.Àå¾ÖÀÎ ¿ì´ë 
-   if (specialDiscount == 1) {
-      	if (numberOfTicket == 1) {
-         	totalFee =  basicFee * DISCOUNT_RATE_DISABLED;
-      	} else if (numberOfTicket == 2) {
-         	totalFee = basicFee * DISCOUNT_RATE_DISABLED * 2;
-      	} else {
-         	totalFee = (basicFee * DISCOUNT_RATE_DISABLED * 2) + basicFee * (numberOfTicket - 2);
-      	}
-   }
-   // 2. ±¹°¡À¯°øÀÚ ¿ì´ë 
-   if (specialDiscount == 2) {
-      	if (numberOfTicket == 1) {
-         	totalFee = basicFee * DISCOUNT_RATE_MAN_OF_MERIT;
-     	} else if (numberOfTicket == 2) {
-         	totalFee = basicFee * DISCOUNT_RATE_MAN_OF_MERIT * 2;
-      	} else {
-         	totalFee = (basicFee * DISCOUNT_RATE_MAN_OF_MERIT * 2) + basicFee * (numberOfTicket - 2);
-      	}
-   } 
-   // 3. ÈÞ°¡Àåº´ ¿ì´ë 
-   if (specialDiscount == 3) {
-      	if(numberOfTicket == 1) {
-         	totalFee = basicFee * DISCOUNT_RATE_SOLDIER;
-      	} else if(numberOfTicket == 2) {
-         	totalFee = basicFee * DISCOUNT_RATE_SOLDIER * 2;
-      	} else {
-         	totalFee = (basicFee * DISCOUNT_RATE_SOLDIER * 2) + basicFee * (numberOfTicket - 2);
-      	}
-   }
-   // 4. ÀÓ»êºÎ ¿ì´ë 
-   if (gender == 2 || gender == 4) {
-      	if(specialDiscount == 4) {
-         	if(numberOfTicket == 1) {
-            	totalFee = basicFee * DISCOUNT_RATE_PREGNANT;
-         	} else {
-            	totalFee = (basicFee * DISCOUNT_RATE_PREGNANT) + basicFee * (numberOfTicket - 1);
-         	}
-      	}
-   }   
 
-   // 5. ´ÙµÕÀÌ ¿ì´ë 
-   if(specialDiscount == 5) {
-      	if(numberOfTicket == 1) {
-         	totalFee = basicFee * DISCOUNT_RATE_CHILDREN_CARD;
+   	// ì—°ë ¹ í• ì¸ 
+   	// ì¢…í•©ì´ìš©ê¶Œ 1day 
+   	int basicFee;
+   
+   	if (inputTicketing == 1 && inputOption == 1) {
+    	if(age >= MIN_ADULT_AGE && age <= MAX_ADULT_AGE) {
+        	basicFee = FULL_TICKET_1DAY_ADULT;
+        	basicFeeType = 0;
+      	} else if (age >= MIN_TEEN_AGE && age <= MAX_TEEN_AGE) {
+         	basicFee = FULL_TICKET_1DAY_TEEN;
+         	basicFeeType = 1;
+      	} else if ((age >= MIN_CHILD_AGE && age <= MAX_CHILD_AGE) || age >= 65) {
+        	basicFee = FULL_TICKET_1DAY_CHILD;
+        	basicFeeType = 2;
       	} else {
-         	totalFee = (basicFee * DISCOUNT_RATE_CHILDREN_CARD) + basicFee * (numberOfTicket - 1);
+         	basicFee = 0;
+         	basicFeeType = 3;
+      	}
+   	} 
+   	// ì¢…í•©ì´ìš©ê¶Œ After4 
+   	if (inputTicketing == 1 && inputOption == 2) {
+      	if(age >= MIN_ADULT_AGE && age <= MAX_ADULT_AGE) {
+         	basicFee = FULL_TICKET_AFTER4_ADULT;
+         	basicFeeType = 0;
+      	} else if (age >= MIN_TEEN_AGE && age <= MAX_TEEN_AGE) {
+         	basicFee = FULL_TICKET_AFTER4_TEEN;
+         	basicFeeType = 1;
+      	} else if ((age >= MIN_CHILD_AGE && age <= MAX_CHILD_AGE) || age >= 65) {
+         	basicFee = FULL_TICKET_AFTER4_CHILD;
+         	basicFeeType = 2;
+      	} else {
+         	basicFee = 0;
+         	basicFeeType = 3;
      	}
-   }  
+   	} 
+   	// íŒŒí¬ì´ìš©ê¶Œ 1day 
+   	if (inputTicketing == 2 && inputOption == 1) {
+      	if(age >= MIN_ADULT_AGE && age <= MAX_ADULT_AGE) {
+         	basicFee = PARK_TICKET_1DAY_ADULT;
+         	basicFeeType = 0;
+      	} else if (age >= MIN_TEEN_AGE && age <= MAX_TEEN_AGE) {
+         	basicFee = PARK_TICKET_1DAY_TEEN;
+         	basicFeeType = 1;
+      	} else if ((age >= MIN_CHILD_AGE && age <= MAX_CHILD_AGE) || age >= 65) {
+         	basicFee = PARK_TICKET_1DAY_CHILD;
+         	basicFeeType = 2;
+      	} else {
+         	basicFee = 0;
+         	basicFeeType = 3;
+      	}
+   	} 
+   	// ì¢…í•©ì´ìš©ê¶Œ After4 
+   	if (inputTicketing == 2 && inputOption == 2) {
+      	if(age >= MIN_ADULT_AGE && age <= MAX_ADULT_AGE) {
+         	basicFee = PARK_TICKET_AFTER4_ADULT;
+         	basicFeeType = 0;
+      	} else if (age >= MIN_TEEN_AGE && age <= MAX_TEEN_AGE) {
+         	basicFee = PARK_TICKET_AFTER4_TEEN;
+         	basicFeeType = 1;
+      	} else if ((age >= MIN_CHILD_AGE && age <= MAX_CHILD_AGE) || age >= 65) {
+         	basicFee = PARK_TICKET_AFTER4_CHILD;
+         	basicFeeType = 2;
+      	} else {
+         	basicFee = 0;
+         	basicFeeType = 3;
+      	}
+   	} 
    
-   printf("\n°¡°ÝÀº %d¿ø ÀÔ´Ï´Ù. °¨»çÇÕ´Ï´Ù.", totalFee);
+//   	if (age >= 1 && age < 3) {
+//   		basicFee = BABY;
+//   	}
    
-   printf("\n°è¼Ó ¹ß±ÇÇÏ½Ã°Ú½À´Ï±î?\n1. Æ¼ÄÏ ¹ß±Ç\n2. Á¾·á");
+   	int numberOfTicket;
+   	printf("\nëª‡ìž¥ì„ ì£¼ë¬¸í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n");
+   	scanf("%d", &numberOfTicket);
    
+   	// ìš°ëŒ€ì‚¬í•­ í• ì¸(ìƒì‹œ ìš°ëŒ€ ì •ë³´)  
+   	printf("\nìš°ëŒ€ì‚¬í•­ì„ ì„ íƒí•˜ì„¸ìš”.\n(ì—°ë ¹ì— ë”°ë¥¸ ìš”ê¸ˆí• ì¸ì€ ìžë™ ì ìš©ë©ë‹ˆë‹¤.)\n\n");
+   	printf("0. ìš°ëŒ€ì¡°ê±´ ì—†ìŒ\n");
+   	printf("1. ìž¥ì• ì¸ ìš°ëŒ€\n");
+   	printf("2. êµ­ê°€ìœ ê³µìž ìš°ëŒ€\n");
+   	printf("3. íœ´ê°€ìž¥ë³‘ ìš°ëŒ€\n");
+   	printf("4. ìž„ì‚°ë¶€ ìš°ëŒ€\n");
+   	printf("5. ë‹¤ë‘¥ì´ í–‰ë³µì¹´ë“œ ìš°ëŒ€\n");
+   
+   	int specialDiscount;
+   	int totalFee;
+   
+   	scanf("%d", &specialDiscount);
+   
+   	// 0. ìš°ëŒ€ì¡°ê±´ ì—†ìŒ
+	RE_INPUT_SPECIAL_DISCOUNT:
+	if(!(specialDiscount == 0 || specialDiscount == 1 || specialDiscount == 2 || specialDiscount == 3 || specialDiscount == 4 || specialDiscount == 5)) {
+	
+	   	if (specialDiscount == 0) {
+	      totalFee = basicFee * numberOfTicket;
+	   	}
+	   	// 1.ìž¥ì• ì¸ ìš°ëŒ€ 
+	   	if (specialDiscount == 1) {
+	      	if (numberOfTicket == 1) {
+	         	totalFee =  basicFee * DISCOUNT_RATE_DISABLED;
+	      	} else if (numberOfTicket == 2) {
+	         	totalFee = basicFee * DISCOUNT_RATE_DISABLED * 2;
+	      	} else {
+	         	totalFee = (basicFee * DISCOUNT_RATE_DISABLED * 2) + basicFee * (numberOfTicket - 2);
+	      	}
+	   	}
+	   	// 2. êµ­ê°€ìœ ê³µìž ìš°ëŒ€ 
+	   	if (specialDiscount == 2) {
+	      	if (numberOfTicket == 1) {
+	         	totalFee = basicFee * DISCOUNT_RATE_MAN_OF_MERIT;
+	     	} else if (numberOfTicket == 2) {
+	         	totalFee = basicFee * DISCOUNT_RATE_MAN_OF_MERIT * 2;
+	      	} else {
+	         	totalFee = (basicFee * DISCOUNT_RATE_MAN_OF_MERIT * 2) + basicFee * (numberOfTicket - 2);
+	      	}
+	   	} 
+	   	// 3. íœ´ê°€ìž¥ë³‘ ìš°ëŒ€ 
+	   	if (specialDiscount == 3) {
+	      	if(numberOfTicket == 1) {
+	         	totalFee = basicFee * DISCOUNT_RATE_SOLDIER;
+	      	} else if(numberOfTicket == 2) {
+	         	totalFee = basicFee * DISCOUNT_RATE_SOLDIER * 2;
+	      	} else {
+	         	totalFee = (basicFee * DISCOUNT_RATE_SOLDIER * 2) + basicFee * (numberOfTicket - 2);
+	      	}
+	   	}
+	   	// 4. ìž„ì‚°ë¶€ ìš°ëŒ€ 
+	   	if (gender == 2 || gender == 4) {
+	      	if(specialDiscount == 4) {
+	         	if(numberOfTicket == 1) {
+	            	totalFee = basicFee * DISCOUNT_RATE_PREGNANT;
+	         	} else {
+	            	totalFee = (basicFee * DISCOUNT_RATE_PREGNANT) + basicFee * (numberOfTicket - 1);
+	         	}
+	      	}
+	   	}   
+	
+		// 5. ë‹¤ë‘¥ì´ ìš°ëŒ€ 
+	   	if(specialDiscount == 5) {
+	      	if(numberOfTicket == 1) {
+	         	totalFee = basicFee * DISCOUNT_RATE_CHILDREN_CARD;
+	      	} else {
+	         	totalFee = (basicFee * DISCOUNT_RATE_CHILDREN_CARD) + basicFee * (numberOfTicket - 1);
+	     	}
+	   	}
+	   	goto RE_INPUT_SPECIAL_DISCOUNT; 
+	}
+   
+   	orderList [orderCount][0] = inputTicketing; // ì´ìš©ê¶Œ 
+   	orderList [orderCount][1] = inputOption; // ì˜µì…˜ 
+   	orderList [orderCount][2] = basicFeeType; // 
+   	orderList [orderCount][3] = numberOfTicket;
+   	orderList [orderCount][4] = totalFee;
+   	orderList [orderCount][5] = specialDiscount;
+  	orderCount++;
+   	
+   	printf("\nê³„ì† ë°œê¶Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n1. í‹°ì¼“ ë°œê¶Œ\n2. ì¢…ë£Œ");
+  	scanf("%d", &continueButton);
+	} while (continueButton == 1);
+	
+	
+	// ì¶œë ¥ 
+	printf("=============================\n");
+	for (int index = 0; index < orderCount; index++) {
+		if (orderList[index][0] == 1) {
+			printf("ì¢…í•©ì´ìš©ê¶Œ\t");
+		} else {
+			printf("íŒŒí¬ì´ìš©ê¶Œ\t");
+		}
+		
+		if(orderList[index][1] == 0) {
+			printf("1Day\t");
+		} else {
+			printf("After4\t");
+		}
+		
+		if(orderList[index][2] == 0) {
+			printf("ì–´ë¥¸\t");
+		} else if (orderList[index][2] == 1) {
+			printf("ì²­ì†Œë…„\t");
+		} else if (orderList[index][2] == 2) {
+			printf("ì–´ë¦°ì´\t"); 
+		} else if (orderList[index][2] == 3) {
+			
+		} else {
+			
+		}
+		
+		if (orderList[index][5] == 0) {
+			printf("*ìš°ëŒ€ì‚¬í•­ ì—†ìŒ\t");
+		} else if (orderList[index][5] == 1) {
+			printf("*ìž¥ì• ì¸ ìš°ëŒ€\t");
+		} else if (orderList[index][5] == 2) {
+			printf("*êµ­ê°€ìœ ê³µìž ìš°ëŒ€\t");
+		} else if (orderList[index][5] == 3) {
+			printf("*íœ´ê°€ìž¥ë³‘ ìš°ëŒ€\t");
+		} else if (orderList[index][5] == 4) {
+			printf("*ìž„ì‚°ë¶€ ìš°ëŒ€\t");
+		} else if (orderList[index][5] == 5) {
+			printf("*ë‹¤ë‘¥ì´ í–‰ë³µì¹´ë“œ ìš°ëŒ€\t");
+		}
+		printf("\n");
+//		printf("%d %d %d %d %d %d", orderList[index][0], orderList[index][1], orderList[index][2], orderList[index][3], orderList[index][4], orderList[index][5]);
+	}
 }
